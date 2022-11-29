@@ -51,6 +51,7 @@ ExportedObj/
 *.mdb.meta
 
 # Package library meta files
+CHANGELOG.md.meta
 LICENSE.md.meta
 README.md.meta
 package.json.meta

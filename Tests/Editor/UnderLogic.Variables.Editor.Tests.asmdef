@@ -1,0 +1,21 @@
+{
+    "name": "UnderLogic.Variables.Editor.Tests",
+    "rootNamespace": "UnderLogic.Variables",
+    "references": [
+        "GUID:9bb5529e5e5ee432c92de384993346d3",
+        "GUID:55f0b2a6f267e48d09a7fc53597a70e0",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
