@@ -1,6 +1,6 @@
 {
   "name": "com.underlogic.game-variables",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Game Variables",
   "description": "Game variables for shared state and reactive behavior between components and scenes",
   "unity": "2019.1",
@@ -23,5 +23,9 @@
     "displayName": "Using Variables",
     "description": "Contains sample scene demonstrating the use of variables",
     "path": "Samples~/Variables"
+  }, {
+    "displayName": "Using Watchers",
+    "description": "Contains sample scene demonstrating the use of variable watcher components",
+    "path": "Samples~/Watchers"
   }]
 }
