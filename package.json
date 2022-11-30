@@ -1,12 +1,12 @@
 {
-  "name": "com.underlogic.game-variables",
-  "version": "0.2.0",
-  "displayName": "Game Variables",
-  "description": "Game variables for shared state and reactive behavior between components and scenes",
+  "name": "com.underlogic.runtime-variables",
+  "version": "0.2.1",
+  "displayName": "Runtime Variables",
+  "description": "Runtime variables for shared state and reactive behavior between components and scenes",
   "unity": "2019.1",
-  "documentationUrl": "https://github.com/UnderLogic/game-variables/wiki/Variables",
-  "changelogUrl": "https://github.com/UnderLogic/game-variables/CHANGELOG.md",
-  "licensesUrl": "https://github.com/UnderLogic/game-variables/LICENSE.md",
+  "documentationUrl": "https://github.com/UnderLogic/runtime-variables/wiki/Variables",
+  "changelogUrl": "https://github.com/UnderLogic/runtime-variables/CHANGELOG.md",
+  "licensesUrl": "https://github.com/UnderLogic/runtime-variables/LICENSE.md",
   "dependencies": {},
   "keywords": [
     "library",
@@ -21,11 +21,11 @@
   },
   "samples": [{
     "displayName": "Using Variables",
-    "description": "Contains sample scene demonstrating the use of variables",
+    "description": "Contains sample scene demonstrating the use of runtime variables",
     "path": "Samples~/Variables"
   }, {
     "displayName": "Using Watchers",
-    "description": "Contains sample scene demonstrating the use of variable watcher components",
+    "description": "Contains sample scene demonstrating the use of runtime variable watcher components",
     "path": "Samples~/Watchers"
   }]
 }
