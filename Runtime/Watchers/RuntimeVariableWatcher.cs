@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace UnderLogic.Variables.Watchers
 {
-    public abstract class VariableWatcher<T, TVar> : MonoBehaviour where TVar: Variable<T>
+    public abstract class RuntimeVariableWatcher<T, TVar> : MonoBehaviour where TVar: RuntimeVariable<T>
     {
         [SerializeField] private TVar variable;
 

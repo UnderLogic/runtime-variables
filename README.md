@@ -1,4 +1,4 @@
-# Game Variables
+# Runtime Variables
 
 Unity package library for sharing variable data across components and scenes.
 Uses `ScriptableObjects` to store data and exposes events for when values change.
@@ -16,7 +16,7 @@ Installing it by git URL allows the package to be updated when new releases are 
 
 ## Documentation
 
-See [Wiki](https://github.com/UnderLogic/game-variables/wiki/Variables) for documentation and usage.
+See [Wiki](https://github.com/UnderLogic/runtime-variables/wiki/Variables) for documentation and usage.
 
 ## Samples
 
@@ -25,16 +25,18 @@ It is highly recommended that you import the samples so you can see the library 
 
 ## Contributing
 
-To make working on the library easier while keeping this repository minimal, it is recommended to create a separate Unity project, (i.e. `game-variables-project`).
+To make working on the library easier while keeping this repository minimal, it is recommended to create a separate Unity project, (i.e. `runtime-variables-project`).
 
 Then link the following folders into the Unity project for easy editing/syncing while keeping code completion and intellisense:
 
 ```shell
-$ cd game-variables-project/Assets
-$ ln -s ~/game-variables/Editor Scripts/Editor
-$ ln -s ~/game-variables/Runtime Scripts/Runtime
-$ ln -s ~/game-variables/Tests Scripts/Tests
-$ ln -s ~/game-variables/Samples~ Samples
+$ cd runtime-variables-project/Assets
+$ ln -s ~/runtime-variables/Samples~ Samples
+
+$ mkdir -p Scripts && cd Scripts
+$ ln -s ~/runtime-variables/Editor
+$ ln -s ~/runtime-variables/Runtime
+$ ln -s ~/runtime-variables/Tests
 ```
 
 **NOTE:** This assumes both folders are in your `$HOME` folder. Adjust paths accordingly if they differ.

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnderLogic.Variables
 {
     [CreateAssetMenu(menuName = "Variables/Double Variable")]
-    public class DoubleVariable : Variable<double>
+    public class DoubleVariable : RuntimeVariable<double>
     {
         public void Add(int amount) => SetValue(Value + amount);
         public void Add(float amount) => SetValue(Value + amount);
