@@ -1,4 +1,4 @@
 namespace UnderLogic.Variables.Watchers
 {
-    public class DoubleVariableWatcher : VariableWatcher<double, DoubleVariable> { }
+    public class DoubleVariableWatcher : RuntimeVariableWatcher<double, DoubleVariable> { }
 }

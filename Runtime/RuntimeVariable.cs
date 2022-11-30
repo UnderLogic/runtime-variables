@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace UnderLogic.Variables
 {
-    public abstract class Variable<T> : ScriptableObject
+    public abstract class RuntimeVariable<T> : ScriptableObject
     {
         [SerializeField] private T initialValue;
         [SerializeField] private T value;
@@ -38,7 +38,7 @@ namespace UnderLogic.Variables
         public void RaiseValueChanging(T newValue) => ValueChanging?.Invoke(newValue);
         public void RaiseValueChanged() => ValueChanged?.Invoke(Value);
 
-        public static implicit operator T(Variable<T> variable) => variable.value;
+        public static implicit operator T(RuntimeVariable<T> variable) => variable.value;
 
         private void OnEnable() => SetInitial();
         private void OnValidate() => RaiseValueChanged();

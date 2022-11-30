@@ -3,7 +3,7 @@ using UnityEngine;
 namespace UnderLogic.Variables
 {
     [CreateAssetMenu(menuName = "Variables/Transform Variable")]
-    public class TransformVariable : Variable<Transform>
+    public class TransformVariable : RuntimeVariable<Transform>
     {
         public void SetPosition(Vector3 newPosition) => Value.position = newPosition;
 

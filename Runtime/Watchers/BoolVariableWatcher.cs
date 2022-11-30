@@ -1,4 +1,4 @@
 namespace UnderLogic.Variables.Watchers
 {
-    public class BoolVariableWatcher : VariableWatcher<bool, BoolVariable> { }
+    public class BoolVariableWatcher : RuntimeVariableWatcher<bool, BoolVariable> { }
 }

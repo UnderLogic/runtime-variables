@@ -2,5 +2,5 @@ using UnityEngine;
 
 namespace UnderLogic.Variables.Watchers
 {
-    public class TransformVariableWatcher : VariableWatcher<Transform, TransformVariable> { }
+    public class TransformVariableWatcher : RuntimeVariableWatcher<Transform, TransformVariable> { }
 }
