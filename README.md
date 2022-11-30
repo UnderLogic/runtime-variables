@@ -16,7 +16,7 @@ Installing it by git URL allows the package to be updated when new releases are 
 
 ## Documentation
 
-See [Documentation]
+See [Wiki](https://github.com/UnderLogic/game-variables/wiki/Variables) for documentation and usage.
 
 ## Samples
 
