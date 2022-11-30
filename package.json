@@ -20,6 +20,8 @@
     "url": "https://underlogic.tech"
   },
   "samples": [{
-    
+    "displayName": "Using Variables",
+    "description": "Contains sample scene demonstrating the use of variables",
+    "path": "Samples~/Variables"
   }]
 }

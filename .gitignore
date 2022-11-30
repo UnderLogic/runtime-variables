@@ -56,6 +56,10 @@ LICENSE.md.meta
 README.md.meta
 package.json.meta
 
+# Samples meta files
+[Ss]amples~/**/*.meta
+[Ss]amples.meta
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 
