@@ -1,10 +1,10 @@
 {
   "name": "com.underlogic.runtime-variables",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "displayName": "Runtime Variables",
   "description": "Runtime variables for shared state and reactive behavior between components and scenes",
   "unity": "2019.1",
-  "documentationUrl": "https://github.com/UnderLogic/runtime-variables/wiki/Variables",
+  "documentationUrl": "https://github.com/UnderLogic/runtime-variables/wiki",
   "changelogUrl": "https://github.com/UnderLogic/runtime-variables/CHANGELOG.md",
   "licensesUrl": "https://github.com/UnderLogic/runtime-variables/LICENSE.md",
   "dependencies": {},
@@ -27,5 +27,9 @@
     "displayName": "Using Watchers",
     "description": "Contains sample scene demonstrating the use of runtime variable watcher components",
     "path": "Samples~/Watchers"
+  }, {
+    "displayName": "Using References",
+    "description": "Contains sample scene demonstrating the use of runtime value references",
+    "path": "Samples~/References"
   }]
 }
