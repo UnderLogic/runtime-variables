@@ -10,16 +10,16 @@ namespace UnderLogic.Variables.Editor
             GUILayout.MinHeight(28),
         };
 
-    public override void OnInspectorGUI()
+        public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
             GUI.enabled = Application.isPlaying;
-            
+
             GUILayout.Space(4);
             if (GUILayout.Button("Raise Value Changed", ButtonLayout))
             {
-                if(target is RuntimeVariable<T> variable)
+                if (target is RuntimeVariable<T> variable)
                     variable.RaiseValueChanged();
             }
         }
