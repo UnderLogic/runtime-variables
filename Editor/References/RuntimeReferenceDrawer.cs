@@ -30,7 +30,7 @@ namespace UnderLogic.Variables.References.Editor
             
             var buttonRect = new Rect(position)
             {
-                width = 104
+                width = 100
             };
             position.xMin = buttonRect.xMax + 4;
 

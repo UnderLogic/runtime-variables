@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IntVariableEditor` custom editor
 - `StringVariableEditor` custom editor
 - `TransformVariableEditor` custom editor
+- `RuntimeReferenceDrawer` custom property drawer
+- `RuntimeVariableWatcherEditor<T, TVar>` abstract base class
+- `BoolVariableWatcherEditor` custom editor
+- `DoubleVariableWatcherEditor` custom editor
+- `FloatVariableWatcherEditor` custom editor
+- `IntVariableWatcherEditor` custom editor
+- `StringVariableWatcherEditor` custom editor
+- `TransformVariableWatcherEditor` custom editor
+- `raiseOnAwake` property to `RuntimeVariableWatcher` base class
 
 ## [0.3.0] - 2022-11-30
 
