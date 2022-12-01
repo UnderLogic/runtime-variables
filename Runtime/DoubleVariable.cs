@@ -21,8 +21,8 @@ namespace UnderLogic.Variables
         public void DivideBy(float amount) => Value /= amount;
         public void DivideBy(double amount) => Value /= amount;
 
-        public void CopyFrom(IntVariable other) => Value += other.Value;
-        public void CopyFrom(FloatVariable other) => Value += other.Value;
+        public void CopyFrom(IntVariable other) => Value = other.Value;
+        public void CopyFrom(FloatVariable other) => Value = other.Value;
         public void CopyFrom(DoubleVariable other) => Value = other.Value;
         public void CopyTo(DoubleVariable other) => other.Value = Value;
 
