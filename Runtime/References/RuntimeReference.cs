@@ -4,13 +4,18 @@ using UnityEngine;
 namespace UnderLogic.Variables.References
 {
     [Serializable]
-    public abstract class RuntimeReference<T, TVar> where TVar: RuntimeVariable<T>
+    public abstract class RuntimeReference<T, TVar> where TVar : RuntimeVariable<T>
     {
         [SerializeField] private bool useConstant;
         [SerializeField] private T constantValue;
         [SerializeField] private TVar variable;
 
-        public bool UseConstant => useConstant;
+        public bool UseConstant
+        {
+            get => useConstant;
+            set => SetUseConstant(value);
+        }
+
         public T ConstantValue => constantValue;
         public TVar Variable => variable;
 
@@ -29,5 +34,7 @@ namespace UnderLogic.Variables.References
 
             variable.SetValue(newValue);
         }
+
+        public void SetUseConstant(bool trueOrFalse) => useConstant = trueOrFalse;
     }
 }
