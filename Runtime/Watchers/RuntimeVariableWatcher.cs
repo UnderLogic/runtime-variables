@@ -8,6 +8,7 @@ namespace UnderLogic.Variables.Watchers
         [SerializeField] private TVar variable;
 
         [Header("Behavior")]
+        [SerializeField] private bool raiseOnAwake;
         [SerializeField] private bool raiseOnEnable;
         [SerializeField] private bool raiseOnStart;
 
@@ -23,6 +24,12 @@ namespace UnderLogic.Variables.Watchers
         {
             if (variable != null)
                 onValueChanged?.Invoke(variable.Value);
+        }
+
+        private void Awake()
+        {
+            if (raiseOnAwake)
+                RaiseValueChanged();
         }
 
         private void Start()

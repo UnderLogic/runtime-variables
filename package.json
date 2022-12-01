@@ -1,6 +1,6 @@
 {
   "name": "com.underlogic.runtime-variables",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "displayName": "Runtime Variables",
   "description": "Runtime variables for shared state and reactive behavior between components and scenes",
   "unity": "2019.1",
@@ -12,7 +12,8 @@
     "library",
     "variables",
     "shared",
-    "data"
+    "data",
+    "events"
   ],
   "author": {
     "name": "Under Logic",
