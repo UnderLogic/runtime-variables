@@ -1,4 +1,4 @@
-# IntReference
+# Vector2IntReference
 
 Derives from [`RuntimeReference<T, TVar>`](runtime-reference.md).
 
@@ -6,7 +6,7 @@ Marked with the `Serializable` attribute.
 
 ## Description
 
-Represents a value that can point to either a constant signed `int` value or [`IntVariable`](../variables/int-variable.md) value.
+Represents a value that can point to either a constant `Vector2Int` value or [`Vector2IntVariable`](../variables/vector2int-variable.md) value.
 
 Can be toggled at runtime to switch between these values.
 

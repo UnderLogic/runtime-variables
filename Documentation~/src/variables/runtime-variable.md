@@ -35,7 +35,7 @@ Represents an observable value `T` that can be shared and modified throughout th
 - `RaiseValueChanging(T)` - Manually raises a `ValueChanging` event with the value provided.
 - `RaiseValueChanged()` - Manually raises a `ValueChanged` event with the current value.
 
-**NOTE:** Trying to modify a readonly set will result in an `InvalidOperationException` being thrown.
+**NOTE:** Trying to modify a readonly variable will result in an `InvalidOperationException` being thrown.
 
 ## Public Operators
 

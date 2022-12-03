@@ -18,6 +18,8 @@ namespace UnderLogic.Variables.Watchers
         [Space]
         public UnityEvent<T> onValueChanged;
 
+        public TVar Variable => variable;
+
         public void RaiseValueChanging(T newValue) => onValueChanging?.Invoke(newValue);
 
         public void RaiseValueChanged()
