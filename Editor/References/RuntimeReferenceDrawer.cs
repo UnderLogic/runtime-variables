@@ -10,6 +10,10 @@ namespace UnderLogic.Variables.References.Editor
     [CustomPropertyDrawer(typeof(IntReference), true)]
     [CustomPropertyDrawer(typeof(StringReference), true)]
     [CustomPropertyDrawer(typeof(TransformReference), true)]
+    [CustomPropertyDrawer(typeof(Vector2IntReference), true)]
+    [CustomPropertyDrawer(typeof(Vector2Reference), true)]
+    [CustomPropertyDrawer(typeof(Vector3Reference), true)]
+    [CustomPropertyDrawer(typeof(Vector4Reference), true)]
     public class RuntimeReferenceDrawer : PropertyDrawer
     {
         private SerializedProperty _useConstant;

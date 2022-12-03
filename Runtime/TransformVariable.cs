@@ -6,6 +6,8 @@ namespace UnderLogic.Variables
     public class TransformVariable : RuntimeVariable<Transform>
     {
         public void SetPosition(Vector3 newPosition) => Value.position = newPosition;
+        public void SetPosition(Vector3Variable variable) => Value.position = variable.Value;
+
         public void SetActive(bool active) => Value.gameObject.SetActive(active);
 
         public void CopyFrom(TransformVariable other) => Value = other.Value;
