@@ -18,3 +18,14 @@
   - [IntVariable](variables/int-variable.md)
   - [StringVariable](variables/string-variable.md)
   - [TransformVariable](variables/transform-variable.md)
+
+- [References](references.md)
+  - [RuntimeReference\<T, TVar>](references/runtime-reference.md)
+  - [BoolReference](references/bool-reference.md)
+  - [DoubleReference](references/double-reference.md)
+  - [FloatReference](references/float-reference.md)
+  - [IntReference](references/int-reference.md)
+  - [StringReference](references/string-reference.md)
+  - [TransformReference](references/transform-reference.md)
+
+- [Watchers](watchers.md)
