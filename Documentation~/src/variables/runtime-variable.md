@@ -6,9 +6,16 @@ Abstract base class that all other runtime variables derive from.
 
 Represents an observable value `T` that can be shared and modified throughout the application.
 
+## Serialized Fields (Inspector)
+
+- `isReadOnly : bool` - Whether the variable can be mutated.
+- `initialValue : T` - Initial value of the variable, will be re-applied on restart.
+- `value : T` - The current value of the variable.
+
 ## Public Properties
 
-- `InitialValue : T` **(get)** - Initial value of the variable, will be applied on restart.
+- `IsReadOnly : bool` **(get)** - Whether the variable can be mutated.
+- `InitialValue : T` **(get)** - Initial value of the variable, will be re-applied on restart.
 - `Value : T` **(get, set)** - The current value of the variable.
 
 ## Public Events
@@ -24,8 +31,11 @@ Represents an observable value `T` that can be shared and modified throughout th
 - `SetValue(T)` - Sets the value of the variable.
 - `SetInitial()` - Sets the value of the variable to the initial value.
 - `SetDefault()` - Sets the value of the variable to the `default(T)` value.
+- `MakeReadOnly()` - Marks the variable as readonly, useful for freezing after initialization.
 - `RaiseValueChanging(T)` - Manually raises a `ValueChanging` event with the value provided.
 - `RaiseValueChanged()` - Manually raises a `ValueChanged` event with the current value.
+
+**NOTE:** Trying to modify a readonly set will result in an `InvalidOperationException` being thrown.
 
 ## Public Operators
 

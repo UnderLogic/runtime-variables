@@ -12,7 +12,7 @@ $ openupm add com.underlogic.runtime-variables
 
 ## Git URL
 
-Starting with Unity 2019.1 you can add packages via git url.
+Starting with Unity 2019.3 you can add packages via git url.
 You can add this package by the following url: `https://github.com/UnderLogic/runtime-variables`
 
 Using this method will allow you to update the package through the Unity Package Manager.
