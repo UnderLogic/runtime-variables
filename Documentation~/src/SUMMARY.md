@@ -6,6 +6,7 @@
 
 - [Installation](installation.md)
 - [Getting Started](getting-started.md)
+- [Custom Types](custom-types.md)
 - [Related Libraries](related-libraries.md)
 
 # Library Reference
