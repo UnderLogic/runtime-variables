@@ -16,7 +16,7 @@ You may also add any additional helper properties and methods as you need.
 
 ## References
 
-1. Create a new class that derives from `RuntimeReference<T, TVar>` where `T` should be the native type and `TVar` is the variable type.
+1. Create a new class that derives from `RuntimeReference<T, TVar>` where `T` should be the underlying type and `TVar` is the variable type.
 2. Ensure the new type is marked with the `Serializable` attribute, so it appears in the Inspector.
 3. Now you can use the reference in your components.
 
@@ -33,7 +33,7 @@ No need to create multiple variants unless you explicitly need them to behave di
 
 ## Watchers
 
-1. Create a new class that derives from `RuntimeVariableWatcher<T, TVar>`, where `T` should be the type and `TVar` is the variable type.
+1. Create a new class that derives from `RuntimeVariableWatcher<T, TVar>`, where `T` should be the underlying type and `TVar` is the variable type.
 2. You can now use the watcher component in your scenes.
 
 ### Editors
@@ -41,7 +41,7 @@ No need to create multiple variants unless you explicitly need them to behave di
 For the custom Inspector GUI to work you will need to create a new custom editor class.
 You can reuse the `RuntimeVariableWatcherEditor<T, TVar>` class.
 
-1. Create a new class that derives from `RuntimeVariableWatcherEditor<T, TVar>`, where `T` should be the native type and `TVar` is the variable type.
+1. Create a new class that derives from `RuntimeVariableWatcherEditor<T, TVar>`, where `T` should be the underlying type and `TVar` is the variable type.
 2. Ensure the new type is marked with the `CustomEditor` attribute for your custom watcher type.
 
 **NOTE:** Unlike the property drawer, a `CustomEditor` can only reference a single type.
