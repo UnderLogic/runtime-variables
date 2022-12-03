@@ -6,7 +6,7 @@ Marked with the `Serializable` attribute.
 
 ## Description
 
-Represents a value that can point to either a constant `bool` value or [`RuntimeVariable<bool>`](../variables/runtime-variable.md) value.
+Represents a value that can point to either a constant `bool` value or [`BoolVariable`](../variables/bool-variable.md) value.
 
 Can be toggled at runtime to switch between these values.
 

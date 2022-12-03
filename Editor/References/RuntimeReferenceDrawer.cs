@@ -4,6 +4,7 @@ using UnityEngine;
 namespace UnderLogic.Variables.References.Editor
 {
     [CustomPropertyDrawer(typeof(BoolReference), true)]
+    [CustomPropertyDrawer(typeof(ColorReference), true)]
     [CustomPropertyDrawer(typeof(DoubleReference), true)]
     [CustomPropertyDrawer(typeof(FloatReference), true)]
     [CustomPropertyDrawer(typeof(IntReference), true)]
