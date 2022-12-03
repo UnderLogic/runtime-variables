@@ -20,7 +20,11 @@ Installing it by git URL allows the package to be updated when new releases are 
 
 ## Documentation
 
-See [Wiki](https://github.com/UnderLogic/runtime-variables/wiki/Variables) for documentation and usage.
+Docs can be found in the [`Documentation~`](./Documentation~) folder, and can be viewed via [`mdbook`](https://rust-lang.github.io/mdBook/index.html):
+
+```shell
+$ mdbook serve ./Documentation~ --open
+```
 
 ## Samples
 
