@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ColorReference` variant
 - Custom editors for new types
 
+### Changed
+
+- Exposed `Variable` getter property on `RuntimeVariableWatcher` component
+
 ## [0.4.2] - 2022-12-03
 
 ### Added

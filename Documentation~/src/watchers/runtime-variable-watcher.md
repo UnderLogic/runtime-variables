@@ -15,6 +15,10 @@ Component that watches a [`RuntimeVariable<T>`](../variables/runtime-variable.md
 - `onValueChanging: UnityEvent<T>` - The actions to perform when the variable value is changing.
 - `onValueChanged : UnityEvent<T>` - The actions to perform when the variable value has changed.
 
+## Public Properties
+
+- `Variable : TVar` **(get)** - The variable being watched for value changes.
+
 ## Public Methods
 
 - `RaiseValueChanging(T)` - Manually raises the `onValueChanging` event with the value provided.
