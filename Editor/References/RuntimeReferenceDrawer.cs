@@ -14,7 +14,7 @@ namespace UnderLogic.Variables.References.Editor
         private SerializedProperty _useConstant;
         private SerializedProperty _constantValue;
         private SerializedProperty _variable;
-        
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             label = EditorGUI.BeginProperty(position, label, property);
@@ -27,7 +27,7 @@ namespace UnderLogic.Variables.References.Editor
             _variable = property.FindPropertyRelative("variable");
 
             var useConstantValue = _useConstant.boolValue;
-            
+
             var buttonRect = new Rect(position)
             {
                 width = 100
@@ -46,7 +46,7 @@ namespace UnderLogic.Variables.References.Editor
             {
                 menu.DropDown(buttonRect);
             }
-            
+
             EditorGUI.PropertyField(position, useConstantValue ? _constantValue : _variable, GUIContent.none);
 
             if (EditorGUI.EndChangeCheck())
