@@ -20,7 +20,10 @@ Installing it by git URL allows the package to be updated when new releases are 
 
 ## Documentation
 
-Docs can be found in the [`Documentation~`](./Documentation~) folder, and can be viewed via [`mdbook`](https://rust-lang.github.io/mdBook/index.html):
+[Online documentation](https://underlogic.github.io/runtime-variables/) is automatically published to GitHub Pages.
+
+
+Offline docs can be found in the [`Documentation~`](./Documentation~) folder, and can be viewed via [`mdbook`](https://rust-lang.github.io/mdBook/index.html):
 
 ```shell
 $ mdbook serve ./Documentation~ --open
