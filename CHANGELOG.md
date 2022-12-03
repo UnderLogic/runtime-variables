@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `isReadOnly`
+- Added `isReadOnly` and `IsReadOnly` property to `RuntimeVariable` base class
+- Added `MakeReadOnly()` method to `RuntimeVariable` base class
 
 ## [0.4.1] - 2022-12-02
 
