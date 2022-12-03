@@ -29,3 +29,10 @@
   - [TransformReference](references/transform-reference.md)
 
 - [Watchers](watchers.md)
+  - [RuntimeVariableWatcher\<T, TVar>](watchers/runtime-variable-watcher.md)
+  - [BoolVariableWatcher](watchers/bool-variable-watcher.md)
+  - [DoubleVariableWatcher](watchers/double-variable-watcher.md)
+  - [FloatVariableWatcher](watchers/float-variable-watcher.md)
+  - [IntVariableWatcher](watchers/int-variable-watcher.md)
+  - [StringVariableWatcher](watchers/string-variable-watcher.md)
+  - [TransformVariableWatcher](watchers/transform-variable-watcher.md)
