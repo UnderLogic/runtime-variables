@@ -36,7 +36,7 @@ No need to create multiple variants unless you explicitly need them to behave di
 1. Create a new class that derives from `RuntimeVariableWatcher<T, TVar>`, where `T` should be the underlying type and `TVar` is the variable type.
 2. You can now use the watcher component in your scenes.
 
-### Editors
+### Editor
 
 For the custom Inspector GUI to work you will need to create a new custom editor class.
 You can reuse the `RuntimeVariableWatcherEditor<T, TVar>` class.
