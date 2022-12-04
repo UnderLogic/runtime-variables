@@ -6,7 +6,7 @@ You may also add any additional helper properties and methods as you need.
 
 ## Variables
 
-1. Create a new class that derives from `RuntimeVariable<T>`, where `T` should be the type you wish to wrap.
+1. Create a new class that derives from [`RuntimeVariable<T>`](variables/runtime-variable.md), where `T` should be the type you wish to wrap.
 2. Ensure the new type is marked with the `CreateAssetMenu` attribute, so you can create instances in the Editor.
 3. Create any instances of the new variable in your `Assets` folder.
 4. Configure the `isReadOnly` and `initialValue` as needed.
@@ -16,7 +16,7 @@ You may also add any additional helper properties and methods as you need.
 
 ## References
 
-1. Create a new class that derives from `RuntimeReference<T, TVar>` where `T` should be the underlying type and `TVar` is the variable type.
+1. Create a new class that derives from [`RuntimeReference<T, TVar>`](references/runtime-reference.md) where `T` should be the underlying type and `TVar` is the variable type.
 2. Ensure the new type is marked with the `Serializable` attribute, so it appears in the Inspector.
 3. Now you can use the reference in your components.
 
@@ -33,7 +33,7 @@ No need to create multiple variants unless you explicitly need them to behave di
 
 ## Watchers
 
-1. Create a new class that derives from `RuntimeVariableWatcher<T, TVar>`, where `T` should be the underlying type and `TVar` is the variable type.
+1. Create a new class that derives from [`RuntimeVariableWatcher<T, TVar>`](watchers/runtime-variable-watcher.md), where `T` should be the underlying type and `TVar` is the variable type.
 2. You can now use the watcher component in your scenes.
 
 ### Editor
