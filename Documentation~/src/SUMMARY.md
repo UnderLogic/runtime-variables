@@ -26,6 +26,10 @@
   - [Vector3Variable](variables/vector3-variable.md)
   - [Vector4Variable](variables/vector4-variable.md)
 
+- [Observables](observables.md)
+  - [IObservable](observables/iobservable.md)
+  - [ObservableObject](observables/observable-object.md)
+
 - [References](references.md)
   - [RuntimeReference\<T, TVar>](references/runtime-reference.md)
   - [BoolReference](references/bool-reference.md)
