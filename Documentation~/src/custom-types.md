@@ -14,6 +14,16 @@ You may also add any additional helper properties and methods as you need.
 
 **NOTE:** While most people create `ScriptableObject` instances in the Editor, you can create them at runtime as well!
 
+## Observables
+
+1. Create a new class that derives from [`ObservableObject`](observables/observable-object.md).
+2. Add `private` backing fields and `public` accessor properties.
+3. Use the `TrySetProperty()` method in the property `set` block.
+4. Optionally raise events via `RaisePropertyChanged()` method for any computed properties.
+5. Ensure the new type is marked with the `CreateAssetMenu` attribute, so you can create instances in the Editor.
+6. Create any instances of the new variable in your `Assets` folder.
+7. Now you can use them throughout your application.
+
 ## References
 
 1. Create a new class that derives from [`RuntimeReference<T, TVar>`](references/runtime-reference.md) where `T` should be the underlying type and `TVar` is the variable type.

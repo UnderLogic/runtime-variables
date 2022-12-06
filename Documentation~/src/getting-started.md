@@ -15,6 +15,11 @@ Easy to drag and drop references in the Editor and view/modify them in the Inspe
 
 See `runtime-collections` library in the [related-libraries](related-libraries.md) section for working with collections.
 
+### Complex Types
+
+The common case of needing to represent a complex data type with various types of fields.
+Using the [ObservableObject](observables/observable-object.md) allows property value changes to be seen by other components.
+
 ### Singleton
 
 The common case of needing a single, global instance of data that can be accessed everywhere.
