@@ -29,6 +29,7 @@
 - [Observables](observables.md)
   - [IObservable](observables/iobservable.md)
   - [ObservableObject](observables/observable-object.md)
+  - [ObservableWatcher](observables/observable-watcher.md)
 
 - [References](references.md)
   - [RuntimeReference\<T, TVar>](references/runtime-reference.md)

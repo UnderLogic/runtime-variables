@@ -1,5 +1,7 @@
 # IObservable
 
+Similar to `INotifyPropertyChanging` and `INotifyPropertyChanged` interfaces.
+
 ## Description
 
 Represents an object that can be observed for property changes.

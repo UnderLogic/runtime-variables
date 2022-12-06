@@ -21,8 +21,9 @@ It can be shared and modified throughout the application.
 
 ## Protected Methods
 
-- `TrySetProperty<T>(ref T, T, [string]): bool` - Attempts to set the field value with the new `T` value.
-Will raise the `PropertyChanging` and `PropertyChanged` events if the value is different.
+- `TrySetProperty<T>(ref T, T, [string]): bool` - Attempts to set the field value with the new `T` value. Optionally, a property name can be provided.
+
+**NOTE:** The `PropertyChanging` and `PropertyChanged` events are only raised when the new value is **not equal** to the existing value.
 
 **NOTE:** The `propertyName` argument is optional and defaults to the value of [`[CallerMemberName]`](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.callermembernameattribute?view=net-7.0).
 

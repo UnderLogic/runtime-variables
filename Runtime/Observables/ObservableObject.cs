@@ -10,8 +10,8 @@ namespace UnderLogic.Variables.Observables
         public event UnityAction<string> PropertyChanging;
         public event UnityAction<string> PropertyChanged;
 
-        public void RaisePropertyChanging(string propertyName) => PropertyChanging.Invoke(propertyName);
-        public void RaisePropertyChanged(string propertyName) => PropertyChanged.Invoke(propertyName);
+        public void RaisePropertyChanging(string propertyName) => PropertyChanging?.Invoke(propertyName);
+        public void RaisePropertyChanged(string propertyName) => PropertyChanged?.Invoke(propertyName);
         
         protected bool TrySetProperty<T>(ref T value, T newValue, [CallerMemberName] string propertyName = "")
         {
