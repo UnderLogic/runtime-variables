@@ -12,7 +12,10 @@ Component that watches a [`RuntimeVariable<T>`](../variables/runtime-variable.md
 - `raiseOnAwake : bool` - Whether the `onValueChanged` event should be raised when `Awake()` is called.
 - `raiseOnEnable : bool` - Whether the `onValueChanged` event should be raised when `OnEnable()` is called.
 - `raiseOnStart : bool` - Whether the `onValueChanged` event should be raised when `Start()` is called.
-- `onValueChanging: UnityEvent<T>` - The actions to perform when the variable value is changing.
+
+# Public Events (Inspector)
+
+- `onValueChanging : UnityEvent<T>` - The actions to perform when the variable value is changing.
 - `onValueChanged : UnityEvent<T>` - The actions to perform when the variable value has changed.
 
 ## Public Properties
