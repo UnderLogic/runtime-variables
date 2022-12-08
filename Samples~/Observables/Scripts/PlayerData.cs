@@ -1,4 +1,3 @@
-using System.Collections;
 using UnderLogic.Variables.Observables;
 using UnityEngine;
 
