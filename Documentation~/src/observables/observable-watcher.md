@@ -15,7 +15,7 @@ Component that watches an [`ObservableObject`](observable-object.md) for propert
 
 **NOTE:** The `propertyName` will be `null` when the `onPropertyChanged` event is raised from `raiseOnAwake`, `raiseOnEnable`, or `raiseOnStart`.
 
-# Public Events (Inspector)
+## Public Events (Inspector)
 
 - `onPropertyChanging : UnityEvent<ObservableObject, string>` - The actions to perform when a property on the object is changing.
 - `onPropertyChanged : UnityEvent<ObservableObject, string>` - The actions to perform when a property on the object has changed.
