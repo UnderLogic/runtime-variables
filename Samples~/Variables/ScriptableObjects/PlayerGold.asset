@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3a0946566e42d5b8fdf1ac09993a30, type: 3}
-  m_Name: PlayerHealth
+  m_Script: {fileID: 11500000, guid: d57463950c174441b5db3116c37d4bb9, type: 3}
+  m_Name: PlayerGold
   m_EditorClassIdentifier: 
   isReadOnly: 0
-  initialValue: 50
-  value: 85
+  initialValue: 1000
+  value: 1000
