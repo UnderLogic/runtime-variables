@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ScriptableObjectVariable` variant
 - `ScriptableObjectWatcher` component
-- Icons for variables
+- Icons for variables in the Editor
+- Icons for watcher components in the Editor
 
 ## [0.6.1] - 2022-12-08
 
