@@ -1,0 +1,987 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Runtime Variables</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="CHANGELOG.html"><strong aria-hidden="true">2.</strong> Changelog</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="installation.html"><strong aria-hidden="true">3.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started.html"><strong aria-hidden="true">4.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="custom-types.html"><strong aria-hidden="true">5.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="related-libraries.html"><strong aria-hidden="true">6.</strong> Related Libraries</a></li><li class="chapter-item expanded affix "><li class="part-title">Library Reference</li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">7.</strong> Variables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="variables/runtime-variable.html"><strong aria-hidden="true">7.1.</strong> RuntimeVariable&lt;T&gt;</a></li><li class="chapter-item expanded "><a href="variables/bool-variable.html"><strong aria-hidden="true">7.2.</strong> BoolVariable</a></li><li class="chapter-item expanded "><a href="variables/color-variable.html"><strong aria-hidden="true">7.3.</strong> ColorVariable</a></li><li class="chapter-item expanded "><a href="variables/double-variable.html"><strong aria-hidden="true">7.4.</strong> DoubleVariable</a></li><li class="chapter-item expanded "><a href="variables/float-variable.html"><strong aria-hidden="true">7.5.</strong> FloatVariable</a></li><li class="chapter-item expanded "><a href="variables/int-variable.html"><strong aria-hidden="true">7.6.</strong> IntVariable</a></li><li class="chapter-item expanded "><a href="variables/scriptable-object-variable.html"><strong aria-hidden="true">7.7.</strong> ScriptableObjectVariable</a></li><li class="chapter-item expanded "><a href="variables/string-variable.html"><strong aria-hidden="true">7.8.</strong> StringVariable</a></li><li class="chapter-item expanded "><a href="variables/transform-variable.html"><strong aria-hidden="true">7.9.</strong> TransformVariable</a></li><li class="chapter-item expanded "><a href="variables/vector2int-variable.html"><strong aria-hidden="true">7.10.</strong> Vector2IntVariable</a></li><li class="chapter-item expanded "><a href="variables/vector2-variable.html"><strong aria-hidden="true">7.11.</strong> Vector2Variable</a></li><li class="chapter-item expanded "><a href="variables/vector3-variable.html"><strong aria-hidden="true">7.12.</strong> Vector3Variable</a></li><li class="chapter-item expanded "><a href="variables/vector4-variable.html"><strong aria-hidden="true">7.13.</strong> Vector4Variable</a></li></ol></li><li class="chapter-item expanded "><a href="observables.html"><strong aria-hidden="true">8.</strong> Observables</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="observables/iobservable.html"><strong aria-hidden="true">8.1.</strong> IObservable</a></li><li class="chapter-item expanded "><a href="observables/observable-object.html"><strong aria-hidden="true">8.2.</strong> ObservableObject</a></li><li class="chapter-item expanded "><a href="observables/observable-watcher.html"><strong aria-hidden="true">8.3.</strong> ObservableWatcher</a></li></ol></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">9.</strong> References</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="references/runtime-reference.html"><strong aria-hidden="true">9.1.</strong> RuntimeReference&lt;T, TVar&gt;</a></li><li class="chapter-item expanded "><a href="references/bool-reference.html"><strong aria-hidden="true">9.2.</strong> BoolReference</a></li><li class="chapter-item expanded "><a href="references/color-reference.html"><strong aria-hidden="true">9.3.</strong> ColorReference</a></li><li class="chapter-item expanded "><a href="references/double-reference.html"><strong aria-hidden="true">9.4.</strong> DoubleReference</a></li><li class="chapter-item expanded "><a href="references/float-reference.html"><strong aria-hidden="true">9.5.</strong> FloatReference</a></li><li class="chapter-item expanded "><a href="references/int-reference.html"><strong aria-hidden="true">9.6.</strong> IntReference</a></li><li class="chapter-item expanded "><a href="references/string-reference.html"><strong aria-hidden="true">9.7.</strong> StringReference</a></li><li class="chapter-item expanded "><a href="references/transform-reference.html"><strong aria-hidden="true">9.8.</strong> TransformReference</a></li><li class="chapter-item expanded "><a href="references/vector2int-reference.html"><strong aria-hidden="true">9.9.</strong> Vector2IntReference</a></li><li class="chapter-item expanded "><a href="references/vector2-reference.html"><strong aria-hidden="true">9.10.</strong> Vector2Reference</a></li><li class="chapter-item expanded "><a href="references/vector3-reference.html"><strong aria-hidden="true">9.11.</strong> Vector3Reference</a></li><li class="chapter-item expanded "><a href="references/vector4-reference.html"><strong aria-hidden="true">9.12.</strong> Vector4VReference</a></li></ol></li><li class="chapter-item expanded "><a href="watchers.html"><strong aria-hidden="true">10.</strong> Watchers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="watchers/runtime-variable-watcher.html"><strong aria-hidden="true">10.1.</strong> RuntimeVariableWatcher&lt;T, TVar&gt;</a></li><li class="chapter-item expanded "><a href="watchers/bool-variable-watcher.html"><strong aria-hidden="true">10.2.</strong> BoolVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/color-variable-watcher.html"><strong aria-hidden="true">10.3.</strong> ColorVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/double-variable-watcher.html"><strong aria-hidden="true">10.4.</strong> DoubleVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/float-variable-watcher.html"><strong aria-hidden="true">10.5.</strong> FloatVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/int-variable-watcher.html"><strong aria-hidden="true">10.6.</strong> IntVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/scriptable-object-variable-watcher.html"><strong aria-hidden="true">10.7.</strong> ScriptableObjectVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/string-variable-watcher.html"><strong aria-hidden="true">10.8.</strong> StringVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/transform-variable-watcher.html"><strong aria-hidden="true">10.9.</strong> TransformVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/vector2int-variable-watcher.html"><strong aria-hidden="true">10.10.</strong> Vector2IntVariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/vector2-variable-watcher.html"><strong aria-hidden="true">10.11.</strong> Vector2VariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/vector3-variable-watcher.html"><strong aria-hidden="true">10.12.</strong> Vector3VariableWatcher</a></li><li class="chapter-item expanded "><a href="watchers/vector4-variable-watcher.html"><strong aria-hidden="true">10.13.</strong> Vector4VariableWatcher</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Runtime Variables</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="overview"><a class="header" href="#overview">Overview</a></h1>
+<p><img src="images/cover.png" alt="image" /></p>
+<p>Unity package library for sharing variable data across components and scenes, allowing other components to react to changes in values.</p>
+<p>Heavily inspired by the infamous <a href="https://www.youtube.com/watch?v=raQ3iHhE_Kk">Unite 2017: Game Architecture with Scriptable Objects</a> presentation by Ryan Hipple (<a href="https://github.com/roboryantron/Unite2017">GitHub</a>).</p>
+<p>Unfortunately Unity does not understand generics in the Editor and Inspectors, so only concrete types can be used.
+Fortunately, this can be made easy by deriving from a single generic type allowing the same common behaviors.</p>
+<p><strong>NOTE:</strong> This package is still in development and may have breaking changes in future versions until a stable v1.0.0 release is made.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="changelog"><a class="header" href="#changelog">Changelog</a></h1>
+<p>All notable changes to this library will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="062---2022-12-28"><a class="header" href="#062---2022-12-28">[0.6.2] - 2022-12-28</a></h2>
+<h3 id="added"><a class="header" href="#added">Added</a></h3>
+<ul>
+<li><code>ScriptableObjectVariable</code> variant</li>
+<li><code>ScriptableObjectWatcher</code> component</li>
+<li>Icons for variables in the Editor</li>
+<li>Icons for watcher components in the Editor</li>
+</ul>
+<h2 id="061---2022-12-08"><a class="header" href="#061---2022-12-08">[0.6.1] - 2022-12-08</a></h2>
+<h3 id="fixed"><a class="header" href="#fixed">Fixed</a></h3>
+<ul>
+<li>Missing meta files</li>
+</ul>
+<h2 id="060---2022-12-06"><a class="header" href="#060---2022-12-06">[0.6.0] - 2022-12-06</a></h2>
+<h3 id="added-1"><a class="header" href="#added-1">Added</a></h3>
+<ul>
+<li><code>IObservable</code> interface</li>
+<li><code>ObservableObject</code> class</li>
+<li><code>ObservableWatcher</code> component</li>
+<li>Observables sample scene</li>
+</ul>
+<h2 id="050---2022-12-03"><a class="header" href="#050---2022-12-03">[0.5.0] - 2022-12-03</a></h2>
+<h3 id="added-2"><a class="header" href="#added-2">Added</a></h3>
+<ul>
+<li><code>ColorVariable</code> variant</li>
+<li><code>ColorVariableWatcher</code> component</li>
+<li><code>ColorReference</code> variant</li>
+<li><code>Vector2IntVariable</code> variant</li>
+<li><code>Vector2IntVariableWatcher</code> component</li>
+<li><code>Vector2IntReference</code> variant</li>
+<li><code>Vector2Variable</code> variant</li>
+<li><code>Vector2VariableWatcher</code> component</li>
+<li><code>Vector2Reference</code> variant</li>
+<li><code>Vector3Variable</code> variant</li>
+<li><code>Vector3VariableWatcher</code> component</li>
+<li><code>Vector3Reference</code> variant</li>
+<li><code>Vector4Variable</code> variant</li>
+<li><code>Vector4VariableWatcher</code> component</li>
+<li><code>Vector4Reference</code> variant</li>
+<li><code>SetPosition(Vector3Variable)</code> method to <code>TransformVariable</code> class</li>
+<li>Custom editors for new types</li>
+</ul>
+<h3 id="changed"><a class="header" href="#changed">Changed</a></h3>
+<ul>
+<li>Exposed <code>Variable</code> getter property on <code>RuntimeVariableWatcher</code> component</li>
+</ul>
+<h2 id="042---2022-12-03"><a class="header" href="#042---2022-12-03">[0.4.2] - 2022-12-03</a></h2>
+<h3 id="added-3"><a class="header" href="#added-3">Added</a></h3>
+<ul>
+<li><code>isReadOnly</code> and <code>IsReadOnly</code> property to <code>RuntimeVariable</code> base class</li>
+<li><code>MakeReadOnly()</code> method to <code>RuntimeVariable</code> base class</li>
+</ul>
+<h2 id="041---2022-12-02"><a class="header" href="#041---2022-12-02">[0.4.1] - 2022-12-02</a></h2>
+<h3 id="added-4"><a class="header" href="#added-4">Added</a></h3>
+<ul>
+<li>Docs via <code>mdbook</code> in <code>Documentation~</code> directory</li>
+<li>GitHub CI/CD workflows for documentation</li>
+</ul>
+<h2 id="040---2022-11-30"><a class="header" href="#040---2022-11-30">[0.4.0] - 2022-11-30</a></h2>
+<h3 id="added-5"><a class="header" href="#added-5">Added</a></h3>
+<ul>
+<li><code>RuntimeVariableEditor&lt;T&gt;</code> abstract base class</li>
+<li><code>BoolVariableEditor</code> custom editor</li>
+<li><code>DoubleVariableEditor</code> custom editor</li>
+<li><code>FloatVariableEditor</code> custom editor</li>
+<li><code>IntVariableEditor</code> custom editor</li>
+<li><code>StringVariableEditor</code> custom editor</li>
+<li><code>TransformVariableEditor</code> custom editor</li>
+<li><code>RuntimeReferenceDrawer</code> custom property drawer</li>
+<li><code>RuntimeVariableWatcherEditor&lt;T, TVar&gt;</code> abstract base class</li>
+<li><code>BoolVariableWatcherEditor</code> custom editor</li>
+<li><code>DoubleVariableWatcherEditor</code> custom editor</li>
+<li><code>FloatVariableWatcherEditor</code> custom editor</li>
+<li><code>IntVariableWatcherEditor</code> custom editor</li>
+<li><code>StringVariableWatcherEditor</code> custom editor</li>
+<li><code>TransformVariableWatcherEditor</code> custom editor</li>
+<li><code>raiseOnAwake</code> property to <code>RuntimeVariableWatcher</code> base class</li>
+</ul>
+<h2 id="030---2022-11-30"><a class="header" href="#030---2022-11-30">[0.3.0] - 2022-11-30</a></h2>
+<h3 id="added-6"><a class="header" href="#added-6">Added</a></h3>
+<ul>
+<li><code>RuntimeReference&lt;T&gt;</code> abstract base class</li>
+<li><code>BoolReference</code> variant</li>
+<li><code>DoubleReference</code> variant</li>
+<li><code>FloatReference</code> variant</li>
+<li><code>IntReference</code> variant</li>
+<li><code>StringReference</code> variant</li>
+<li><code>TransformReference</code> variant</li>
+<li><code>CopyFrom(BoolVariable)</code> method to <code>BoolVariable</code></li>
+<li><code>CopyFrom(IntVariable)</code> method to <code>DoubleVariable</code></li>
+<li><code>CopyFrom(FloatVariable)</code> method to <code>DoubleVariable</code></li>
+<li><code>CopyFrom(DoubleVariable)</code> method to <code>DoubleVariable</code></li>
+<li><code>CopyFrom(IntVariable)</code> method to <code>FloatVariable</code></li>
+<li><code>CopyFrom(FloatVariable)</code> method to <code>FloatVariable</code></li>
+<li><code>CopyFrom(IntVariable)</code> method to <code>IntVariable</code></li>
+<li><code>CopyFrom(StringVariable)</code> method to <code>StringVariable</code></li>
+<li><code>CopyFrom(TransformVariable)</code> method to <code>TransformVariable</code></li>
+<li><code>CopyTo(BoolVariable)</code> method to <code>BoolVariable</code></li>
+<li><code>CopyTo(DoubleVariable)</code> method to <code>DoubleVariable</code></li>
+<li><code>CopyTo(DoubleVariable)</code> method to <code>FloatVariable</code></li>
+<li><code>CopyTo(FloatVariable)</code> method to <code>FloatVariable</code></li>
+<li><code>CopyTo(IntVariable)</code> method to <code>IntVariable</code></li>
+<li><code>CopyTo(FloatVariable)</code> method to <code>IntVariable</code></li>
+<li><code>CopyTo(DoubleVariable)</code> method to <code>IntVariable</code></li>
+<li><code>CopyTo(StringVariable)</code> method to <code>StringVariable</code></li>
+<li><code>CopyTo(TransformVariable)</code> method to <code>TransformVariable</code></li>
+<li><code>SetValue(int)</code> method to <code>DoubleVariable</code></li>
+<li><code>SetValue(float)</code> method to <code>DoubleVariable</code></li>
+<li><code>SetStringValue(int)</code> method to <code>FloatVariable</code></li>
+<li><code>Stringify(bool)</code> method to <code>StringVariable</code></li>
+<li><code>Stringify(int)</code> method to <code>StringVariable</code></li>
+<li><code>Stringify(float)</code> method to <code>StringVariable</code></li>
+<li><code>Stringify(double)</code> method to <code>StringVariable</code></li>
+<li>References sample scene</li>
+</ul>
+<h3 id="fixed-1"><a class="header" href="#fixed-1">Fixed</a></h3>
+<ul>
+<li>Watchers sample scene UI elements</li>
+</ul>
+<h2 id="021---2022-11-30"><a class="header" href="#021---2022-11-30">[0.2.1] - 2022-11-30</a></h2>
+<h3 id="changed-1"><a class="header" href="#changed-1">Changed</a></h3>
+<ul>
+<li>Renamed package to <code>runtime-variables</code></li>
+<li>Renamed <code>Variable&lt;T&gt;</code> to <code>RuntimeVariable&lt;T&gt;</code> for consistency</li>
+<li>Renamed <code>VariableWatcher&lt;T&gt;</code> to <code>RuntimeVariableWatcher&lt;T&gt;</code> for consistency</li>
+</ul>
+<h2 id="020---2022-11-30"><a class="header" href="#020---2022-11-30">[0.2.0] - 2022-11-30</a></h2>
+<h3 id="added-7"><a class="header" href="#added-7">Added</a></h3>
+<ul>
+<li><code>VariableWatcher&lt;T&gt;</code> abstract base class</li>
+<li><code>BoolVariableWatcher</code> component</li>
+<li><code>DoubleVariableWatcher</code> component</li>
+<li><code>FloatVariableWatcher</code> component</li>
+<li><code>IntVariableWatcher</code> component</li>
+<li><code>StringVariableWatcher</code> component</li>
+<li><code>TransformVariableWatcher</code> component</li>
+<li>Watchers sample scene</li>
+</ul>
+<h2 id="010---2022-11-29"><a class="header" href="#010---2022-11-29">[0.1.0] - 2022-11-29</a></h2>
+<h3 id="added-8"><a class="header" href="#added-8">Added</a></h3>
+<ul>
+<li><code>Variable&lt;T&gt;</code> abstract base class</li>
+<li><code>BoolVariable</code> variant</li>
+<li><code>DoubleVariable</code> variant</li>
+<li><code>FloatVariable</code> variant</li>
+<li><code>IntVariable</code> variant</li>
+<li><code>StringVariable</code> variant </li>
+<li><code>TransformVariable</code> variant</li>
+<li>Variables sample scene</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<h2 id="openupm"><a class="header" href="#openupm">OpenUPM</a></h2>
+<p><a href="https://openupm.com/">OpenUPM</a> is an open source Unity package registry that allows you to easily install thousands of packages.</p>
+<p>You can install this library with the following CLI command:</p>
+<pre><code class="language-shell">$ openupm add com.underlogic.runtime-variables
+</code></pre>
+<h2 id="git-url"><a class="header" href="#git-url">Git URL</a></h2>
+<p>Starting with Unity 2019.3 you can add packages via git url.
+You can add this package by the following url: <code>https://github.com/UnderLogic/runtime-variables</code></p>
+<p>Using this method will allow you to update the package through the Unity Package Manager.</p>
+<h2 id="local-package"><a class="header" href="#local-package">Local Package</a></h2>
+<p>Alternatively, you can clone the git repository and add the package locally.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<h2 id="context"><a class="header" href="#context">Context</a></h2>
+<p>To best understand the purpose of this library and the problems it solves,
+it is highly recommended to watch the <a href="https://www.youtube.com/watch?v=raQ3iHhE_Kk">Unite 2017: Game Architecture with Scriptable Objects</a>
+by Ryan Hipple.</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h2>
+<h3 id="shared-data"><a class="header" href="#shared-data">Shared Data</a></h3>
+<p>The common case of needing to share data between various components, potentially across multiple scenes.
+Easy to drag and drop references in the Editor and view/modify them in the Inspector during play mode.</p>
+<p>See <code>runtime-collections</code> library in the <a href="related-libraries.html">related-libraries</a> section for working with collections.</p>
+<h3 id="complex-types"><a class="header" href="#complex-types">Complex Types</a></h3>
+<p>The common case of needing to represent a complex data type with various types of fields.
+Using the <a href="observables/observable-object.html">ObservableObject</a> allows property value changes to be seen by other components.</p>
+<h3 id="singleton"><a class="header" href="#singleton">Singleton</a></h3>
+<p>The common case of needing a single, global instance of data that can be accessed everywhere.
+This avoids the common pitfalls of traditional Unity singleton objects.</p>
+<h3 id="event-based-architecture"><a class="header" href="#event-based-architecture">Event-Based Architecture</a></h3>
+<p>The case of only wanting to update or perform actions when necessary (reactively) instead of wastefully computing each frame.
+This is very common in UI-heavy applications.</p>
+<p>See <code>event-channels</code> library in the <a href="related-libraries.html">related-libraries</a> section for working with an event bus.</p>
+<h3 id="quick-prototyping"><a class="header" href="#quick-prototyping">Quick Prototyping</a></h3>
+<p>The case of being able to swap between constant and variable values on the fly, allowing rapid prototyping and tweaking.
+By using references you can avoid refactoring components or having to restart your application to test each change.</p>
+<h2 id="samples"><a class="header" href="#samples">Samples</a></h2>
+<p>The <code>Samples~</code> folder contains sample scenes showcasing various aspects of the library in action.
+It is recommended to import and play around with them in Unity to get a feel for how to use the library.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="custom-types"><a class="header" href="#custom-types">Custom Types</a></h1>
+<p>While this library provides many of the common Unity types you will use, you may want to extend this library with your own custom types specific to your application.
+Fortunately, this is rather easy and typically only involves creating a derived class from one of the base classes.
+You may also add any additional helper properties and methods as you need.</p>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>, where <code>T</code> should be the type you wish to wrap.</li>
+<li>Ensure the new type is marked with the <code>CreateAssetMenu</code> attribute, so you can create instances in the Editor.</li>
+<li>Create any instances of the new variable in your <code>Assets</code> folder.</li>
+<li>Configure the <code>isReadOnly</code> and <code>initialValue</code> as needed.</li>
+<li>Now you can use them throughout your application.</li>
+</ol>
+<p><strong>NOTE:</strong> While most people create <code>ScriptableObject</code> instances in the Editor, you can create them at runtime as well!</p>
+<h2 id="observables"><a class="header" href="#observables">Observables</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="observables/observable-object.html"><code>ObservableObject</code></a>.</li>
+<li>Add <code>private</code> backing fields and <code>public</code> accessor properties.</li>
+<li>Use the <code>TrySetProperty()</code> method in the property <code>set</code> block.</li>
+<li>Optionally raise events via <code>RaisePropertyChanged()</code> method for any computed properties.</li>
+<li>Ensure the new type is marked with the <code>CreateAssetMenu</code> attribute, so you can create instances in the Editor.</li>
+<li>Create any instances of the new variable in your <code>Assets</code> folder.</li>
+<li>Now you can use them throughout your application.</li>
+</ol>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a> where <code>T</code> should be the underlying type and <code>TVar</code> is the variable type.</li>
+<li>Ensure the new type is marked with the <code>Serializable</code> attribute, so it appears in the Inspector.</li>
+<li>Now you can use the reference in your components.</li>
+</ol>
+<h3 id="editor"><a class="header" href="#editor">Editor</a></h3>
+<p>For the custom Inspector GUI to work you will need to create a new custom property drawer class.
+You can reuse the <code>RuntimeReferencePropertyDrawer</code> class.</p>
+<ol>
+<li>Create a new class that derives from <code>RuntimeReferenceProperyDrawer</code>.</li>
+<li>Ensure the new class is marked with the <code>CustomPropertyDrawer</code> attribute for your custom reference type.</li>
+</ol>
+<p><strong>NOTE:</strong> You can mark this custom property drawer as the <code>CustomPropertyDrawer</code> for multiple reference types.
+No need to create multiple variants unless you explicitly need them to behave differently.</p>
+<h2 id="watchers"><a class="header" href="#watchers">Watchers</a></h2>
+<ol>
+<li>Create a new class that derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>, where <code>T</code> should be the underlying type and <code>TVar</code> is the variable type.</li>
+<li>You can now use the watcher component in your scenes.</li>
+</ol>
+<h3 id="editor-1"><a class="header" href="#editor-1">Editor</a></h3>
+<p>For the custom Inspector GUI to work you will need to create a new custom editor class.
+You can reuse the <code>RuntimeVariableWatcherEditor&lt;T, TVar&gt;</code> class.</p>
+<ol>
+<li>Create a new class that derives from <code>RuntimeVariableWatcherEditor&lt;T, TVar&gt;</code>, where <code>T</code> should be the underlying type and <code>TVar</code> is the variable type.</li>
+<li>Ensure the new type is marked with the <code>CustomEditor</code> attribute for your custom watcher type.</li>
+</ol>
+<p><strong>NOTE:</strong> Unlike the property drawer, a <code>CustomEditor</code> can only reference a single type.
+You will need to make a custom editor for each custom watcher you make.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="related-libraries"><a class="header" href="#related-libraries">Related Libraries</a></h1>
+<ul>
+<li><a href="https://github.com/UnderLogic/runtime-collections">Runtime Collections</a> <a href="https://openupm.com/packages/com.underlogic.runtime-collections/"><img src="https://img.shields.io/npm/v/com.underlogic.runtime-collections?label=openupm&amp;registry_uri=https://package.openupm.com" alt="openupm" /></a></li>
+<li><a href="https://github.com/UnderLogic/event-channels">Event Channels</a> <a href="https://openupm.com/packages/com.underlogic.event-channels/"><img src="https://img.shields.io/npm/v/com.underlogic.event-channels?label=openupm&amp;registry_uri=https://package.openupm.com" alt="openupm" /></a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="variables-1"><a class="header" href="#variables-1">Variables</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>Runtime variables are implemented as <code>ScriptableObject</code> instances that can be used to share their data across components and scenes.
+They also provide <code>UnityAction</code> events when their value changes or is about to be changed.</p>
+<p>Many of the variables provide helper mutator methods that make it easier to manipulate their values from other components, including <code>UnityEvent</code> bindings.
+This can be especially useful when using the <a href="watchers.html">Watcher</a> components.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="runtimevariablet"><a class="header" href="#runtimevariablet">RuntimeVariable&lt;T&gt;</a></h1>
+<p>Abstract base class that all other runtime variables derive from.</p>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
+<p>Represents an observable value <code>T</code> that can be shared and modified throughout the application.</p>
+<h2 id="serialized-fields-inspector"><a class="header" href="#serialized-fields-inspector">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>isReadOnly : bool</code> - Whether the variable can be mutated.</li>
+<li><code>initialValue : T</code> - Initial value of the variable, will be re-applied on restart.</li>
+<li><code>value : T</code> - The current value of the variable.</li>
+</ul>
+<h2 id="public-properties"><a class="header" href="#public-properties">Public Properties</a></h2>
+<ul>
+<li><code>IsReadOnly : bool</code> <strong>(get)</strong> - Whether the variable can be mutated.</li>
+<li><code>InitialValue : T</code> <strong>(get)</strong> - Initial value of the variable, will be re-applied on restart.</li>
+<li><code>Value : T</code> <strong>(get, set)</strong> - The current value of the variable.</li>
+</ul>
+<h2 id="public-events"><a class="header" href="#public-events">Public Events</a></h2>
+<ul>
+<li><code>ValueChanging : UnityAction&lt;T&gt;</code> - Raised when the value is about to change, providing the new value to be set.</li>
+<li><code>ValueChanged : UnityAction&lt;T&gt;</code> - Raised when the value has changed, providing the newly set value.</li>
+</ul>
+<p><strong>NOTE:</strong> These events are only raised when the new value is <strong>not equal</strong> to the existing value.</p>
+<h2 id="public-methods"><a class="header" href="#public-methods">Public Methods</a></h2>
+<ul>
+<li><code>GetValue() : T</code> - Returns the current value of the variable.</li>
+<li><code>SetValue(T)</code> - Sets the value of the variable.</li>
+<li><code>SetInitial()</code> - Sets the value of the variable to the initial value.</li>
+<li><code>SetDefault()</code> - Sets the value of the variable to the <code>default(T)</code> value.</li>
+<li><code>MakeReadOnly()</code> - Marks the variable as readonly, useful for freezing after initialization.</li>
+<li><code>RaiseValueChanging(T)</code> - Manually raises a <code>ValueChanging</code> event with the value provided.</li>
+<li><code>RaiseValueChanged()</code> - Manually raises a <code>ValueChanged</code> event with the current value.</li>
+</ul>
+<p><strong>NOTE:</strong> Trying to modify a readonly variable will result in an <code>InvalidOperationException</code> being thrown.</p>
+<h2 id="public-operators"><a class="header" href="#public-operators">Public Operators</a></h2>
+<ul>
+<li><code>operator RuntimeVariable&lt;T&gt; : T</code> <strong>(implicit)</strong> - Allows the variable to be unwrapped to the native type <code>T</code> without needing to explicitly cast it.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boolvariable"><a class="header" href="#boolvariable">BoolVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-1"><a class="header" href="#description-1">Description</a></h2>
+<p>Represents an observable <code>bool</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-1"><a class="header" href="#public-methods-1">Public Methods</a></h2>
+<ul>
+<li><code>Toggle()</code> - Inverts the boolean value.</li>
+<li><code>CopyFrom(BoolVariable)</code> - Copies the value of another <a href="variables/bool-variable.html"><code>BoolVariable</code></a> into this variable.</li>
+<li><code>CopyTo(BoolVariable)</code> - Copies the value from this variable into another <a href="variables/bool-variable.html"><code>BoolVariable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="colorvariable"><a class="header" href="#colorvariable">ColorVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-2"><a class="header" href="#description-2">Description</a></h2>
+<p>Represents an observable <code>Color</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-2"><a class="header" href="#public-methods-2">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(ColorVariable)</code> - Copies the value of another <a href="variables/color-variable.html"><code>ColorVariable</code></a> into this variable.</li>
+<li><code>CopyTo(ColorVariable)</code> - Copies the value from this variable into another <a href="variables/color-variable.html"><code>ColorVariable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doublevariable"><a class="header" href="#doublevariable">DoubleVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-3"><a class="header" href="#description-3">Description</a></h2>
+<p>Represents an observable <code>double</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-3"><a class="header" href="#public-methods-3">Public Methods</a></h2>
+<ul>
+<li><code>Add(int)</code> - Adds a signed <code>int</code> value to the variable.</li>
+<li><code>Add(float)</code> - Adds a <code>float</code> value to the variable.</li>
+<li><code>Add(double)</code> - Adds a <code>double</code> value to the variable.</li>
+<li><code>Subtract(int)</code> - Subtracts a signed <code>int</code> value from the variable.</li>
+<li><code>Subtract(float)</code> - Subtracts a <code>float</code> value from the variable.</li>
+<li><code>Subtract(double)</code> - Subtracts a <code>double</code> value from the variable.</li>
+<li><code>MultiplyBy(int)</code> - Multiplies the variable by a signed <code>int</code> value.</li>
+<li><code>MultiplyBy(float)</code> - Multiplies the variable by a <code>float</code> value.</li>
+<li><code>MultiplyBy(double)</code> - Multiplies the variable by a <code>double</code> value.</li>
+<li><code>DivideBy(int)</code> - Divides the variable by a signed <code>int</code> value.</li>
+<li><code>DivideBy(float)</code> - Divides the variable by a <code>float</code> value.</li>
+<li><code>DivideBy(double)</code> - Divides the variable by a <code>double</code> value.</li>
+<li><code>CopyFrom(IntVariable)</code> - Copies the value of another <a href="variables/int-variable.html"><code>IntVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(FloatVariable)</code> - Copies the value of another <a href="variables/float-variable.html"><code>FloatVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(DoubleVariable)</code> - Copies the value of another <a href="variables/double-variable.html"><code>DoubleVariable</code></a> into this variable.</li>
+<li><code>CopyTo(DoubleVariable)</code> - Copies the value from this variable into another <a href="variables/double-variable.html"><code>DoubleVariable</code></a>.</li>
+<li><code>SetValue(int)</code> - Sets the value of this variable to a signed <code>int</code> value.</li>
+<li><code>SetValue(float)</code> - Sets the value of this variable to a <code>float</code> value.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="floatvariable"><a class="header" href="#floatvariable">FloatVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-4"><a class="header" href="#description-4">Description</a></h2>
+<p>Represents an observable <code>float</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-4"><a class="header" href="#public-methods-4">Public Methods</a></h2>
+<ul>
+<li><code>Add(int)</code> - Adds a signed <code>int</code> value to the variable.</li>
+<li><code>Add(float)</code> - Adds a <code>float</code> value to the variable.</li>
+<li><code>Subtract(int)</code> - Subtracts a signed <code>int</code> value from the variable.</li>
+<li><code>Subtract(float)</code> - Subtracts a <code>float</code> value from the variable.</li>
+<li><code>MultiplyBy(int)</code> - Multiplies the variable by a signed <code>int</code> value.</li>
+<li><code>MultiplyBy(float)</code> - Multiplies the variable by a <code>float</code> value.</li>
+<li><code>DivideBy(int)</code> - Divides the variable by a signed <code>int</code> value.</li>
+<li><code>DivideBy(float)</code> - Divides the variable by a <code>float</code> value.</li>
+<li><code>CopyFrom(IntVariable)</code> - Copies the value of another <a href="variables/int-variable.html"><code>IntVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(FloatVariable)</code> - Copies the value of another <a href="variables/float-variable.html"><code>FloatVariable</code></a> into this variable.</li>
+<li><code>CopyTo(FloatVariable)</code> - Copies the value from this variable into another <a href="variables/float-variable.html"><code>FloatVariable</code></a>.</li>
+<li><code>CopyTo(DoubleVariable)</code> - Copies the value from this variable into another <a href="variables/double-variable.html"><code>DoubleVariable</code></a>.</li>
+<li><code>SetValue(int)</code> - Sets the value of this variable to a signed <code>int</code> value.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="intvariable"><a class="header" href="#intvariable">IntVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-5"><a class="header" href="#description-5">Description</a></h2>
+<p>Represents an observable signed <code>int</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-5"><a class="header" href="#public-methods-5">Public Methods</a></h2>
+<ul>
+<li><code>Add(int)</code> - Adds a signed <code>int</code> value to the variable.</li>
+<li><code>Subtract(int)</code> - Subtracts a signed <code>int</code> value from the variable.</li>
+<li><code>MultiplyBy(int)</code> - Multiplies the variable by a signed <code>int</code> value.</li>
+<li><code>DivideBy(int)</code> - Divides the variable by a signed <code>int</code> value.</li>
+<li><code>CopyFrom(IntVariable)</code> - Copies the value of another <a href="variables/int-variable.html"><code>IntVariable</code></a> into this variable.</li>
+<li><code>CopyTo(IntVariable)</code> - Copies the value from this variable into another <a href="variables/int-variable.html"><code>IntVariable</code></a>.</li>
+<li><code>CopyTo(FloatVariable)</code> - Copies the value from this variable into another <a href="variables/float-variable.html"><code>FloatVariable</code></a>.</li>
+<li><code>CopyTo(DoubleVariable)</code> - Copies the value from this variable into another <a href="variables/double-variable.html"><code>DoubleVariable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scriptableobjectvariable"><a class="header" href="#scriptableobjectvariable">ScriptableObjectVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-6"><a class="header" href="#description-6">Description</a></h2>
+<p>Represents an observable <code>ScriptableObject</code> value that can be shared and modified throughout the application.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stringvariable"><a class="header" href="#stringvariable">StringVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-7"><a class="header" href="#description-7">Description</a></h2>
+<p>Represents an observable <code>string</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-properties-1"><a class="header" href="#public-properties-1">Public Properties</a></h2>
+<ul>
+<li><code>IsNullOrEmpty : bool</code> <strong>(get)</strong> - Whether the string is <code>null</code> or <code>&quot;&quot;</code>.</li>
+<li><code>IsNullOrWhiteSpace : bool</code> <strong>(get)</strong> - Whether the string is <code>null</code> or whitespace (including empty);</li>
+</ul>
+<h2 id="public-methods-6"><a class="header" href="#public-methods-6">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(StringVariable)</code> - Copies the value of another <a href="variables/string-variable.html"><code>StringVariable</code></a> into this variable.</li>
+<li><code>CopyTo(StringVariable)</code> - Copies the value from this variable into another <a href="variables/string-variable.html"><code>StringVariable</code></a>.</li>
+<li><code>Stringify(bool)</code> - Sets the value of this variable to the string representation of a <code>bool</code> value.</li>
+<li><code>Stringify(int)</code> - Sets the value of this variable to the string representation of a signed <code>int</code> value.</li>
+<li><code>Stringify(float)</code> - Sets the value of this variable to the string representation of a <code>float</code> value.</li>
+<li><code>Stringify(double)</code> - Sets the value of this variable to the string representation of a <code>double</code> value.</li>
+</ul>
+<p><strong>NOTE:</strong> The <code>Stringify()</code> methods will format the string using <code>CultureInfo.CurrentCulture</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformvariable"><a class="header" href="#transformvariable">TransformVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-8"><a class="header" href="#description-8">Description</a></h2>
+<p>Represents an observable <code>Transform</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-7"><a class="header" href="#public-methods-7">Public Methods</a></h2>
+<ul>
+<li><code>SetPosition(Vector3)</code> - Sets the position of the <code>Transform</code> to a new <code>Vector3</code> value.</li>
+<li><code>SetPosition(Vector3Variable)</code> - Sets the position of the <code>Transform</code> to the value of a <code>Vector3Variable</code>.</li>
+<li><code>SetActive(bool)</code> - Sets the active state of <code>GameObject</code> of the <code>Transform</code>.</li>
+<li><code>CopyFrom(TransformVariable)</code> - Copies the value of another <a href="variables/transform-variable.html"><code>TransformVariable</code></a> into this variable.</li>
+<li><code>CopyTo(TransformVariable)</code> - Copies the value from this variable into another <a href="variables/transform-variable.html"><code>TransformVariable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2intvariable"><a class="header" href="#vector2intvariable">Vector2IntVariable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-9"><a class="header" href="#description-9">Description</a></h2>
+<p>Represents an observable <code>Vector2Int</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-8"><a class="header" href="#public-methods-8">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(Vector2IntVariable)</code> - Copies the value of another <a href="variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> into this variable.</li>
+<li><code>CopyTo(Vector2IntVariable)</code> - Copies the value from this variable into another <a href="variables/vector2int-variable.html"><code>Vector2IntVariable</code></a>.</li>
+<li><code>CopyTo(Vector2Variable)</code> - Copies the value from this variable into another <a href="variables/vector2-variable.html"><code>Vector2Variable</code></a>.</li>
+<li><code>CopyTo(Vector3Variable)</code> - Copies the value from this variable into another <a href="variables/vector3-variable.html"><code>Vector3Variable</code></a>.</li>
+<li><code>CopyTo(Vector4Variable)</code> - Copies the value from this variable into another <a href="variables/vector4-variable.html"><code>Vector4Variable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2variable"><a class="header" href="#vector2variable">Vector2Variable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-10"><a class="header" href="#description-10">Description</a></h2>
+<p>Represents an observable <code>Vector2</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-9"><a class="header" href="#public-methods-9">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(Vector2IntVariable)</code> - Copies the value of another <a href="variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector2Variable)</code> - Copies the value of another <a href="variables/vector2-variable.html"><code>Vector2Variable</code></a> into this variable.</li>
+<li><code>CopyTo(Vector2Variable)</code> - Copies the value from this variable into another <a href="variables/vector2-variable.html"><code>Vector2Variable</code></a>.</li>
+<li><code>CopyTo(Vector3Variable)</code> - Copies the value from this variable into another <a href="variables/vector3-variable.html"><code>Vector3Variable</code></a>.</li>
+<li><code>CopyTo(Vector4Variable)</code> - Copies the value from this variable into another <a href="variables/vector4-variable.html"><code>Vector4Variable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector3variable"><a class="header" href="#vector3variable">Vector3Variable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-11"><a class="header" href="#description-11">Description</a></h2>
+<p>Represents an observable <code>Vector3</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-10"><a class="header" href="#public-methods-10">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(Vector2IntVariable)</code> - Copies the value of another <a href="variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector2Variable)</code> - Copies the value of another <a href="variables/vector2-variable.html"><code>Vector2Variable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector3Variable)</code> - Copies the value of another <a href="variables/vector3-variable.html"><code>Vector3Variable</code></a> into this variable.</li>
+<li><code>CopyTo(Vector3Variable)</code> - Copies the value from this variable into another <a href="variables/vector3-variable.html"><code>Vector3Variable</code></a>.</li>
+<li><code>CopyTo(Vector4Variable)</code> - Copies the value from this variable into another <a href="variables/vector4-variable.html"><code>Vector4Variable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector4variable"><a class="header" href="#vector4variable">Vector4Variable</a></h1>
+<p>Derives from <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>.</p>
+<h2 id="description-12"><a class="header" href="#description-12">Description</a></h2>
+<p>Represents an observable <code>Vector4</code> value that can be shared and modified throughout the application.</p>
+<h2 id="public-methods-11"><a class="header" href="#public-methods-11">Public Methods</a></h2>
+<ul>
+<li><code>CopyFrom(Vector2IntVariable)</code> - Copies the value of another <a href="variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector2Variable)</code> - Copies the value of another <a href="variables/vector2-variable.html"><code>Vector2Variable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector3Variable)</code> - Copies the value of another <a href="variables/vector3-variable.html"><code>Vector3Variable</code></a> into this variable.</li>
+<li><code>CopyFrom(Vector4Variable)</code> - Copies the value of another <a href="variables/vector4-variable.html"><code>Vector4Variable</code></a> into this variable.</li>
+<li><code>CopyTo(Vector4Variable)</code> - Copies the value from this variable into another <a href="variables/vector4-variable.html"><code>Vector4Variable</code></a>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="observables-1"><a class="header" href="#observables-1">Observables</a></h1>
+<h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
+<p>Observable variables are implemented as <code>ScriptableObject</code> instances that represent complex data types.
+Similar to <a href="variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a>, they can be used to share their data across components and scenes.</p>
+<p>They implement the <a href="observables/iobservable.html"><code>IObservable</code></a> interface which provides <code>UnityAction</code> events when a property changes.</p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<p>Developers are expected to create their own subclasses of <a href="observables/observable-object.html"><code>ObservableObject</code></a> and provide custom properties.
+The <code>TrySetProperty&lt;T&gt;()</code> method handles most of the boilerplate code necessary for automatic notifications of property changes.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code class="language-csharp">public class PlayerData : ObservableObject
+{
+    [SerializeField] private string playerName = &quot;Player&quot;;
+    [SerializeField] private int currentHealth = 50;
+    [SerializeField] private int maxHealth = 100;
+    
+    public string PlayerName
+    {
+        get =&gt; playerName;
+        set =&gt; TrySetProperty(ref playerName, value);
+        // propertyName will be &quot;PlayerName&quot; automatically via CallerMemberName
+        // PropertyChanging and PropertyChanged events will be raised
+    }
+    
+    public float HealthPercentage =&gt; CurrentHealth * 100f / MaxHealth;
+    
+    public string CurrentHealth
+    {
+        get =&gt; currentHealth;
+        set {
+            // If the current health was changed, notify the computed property changed
+            if (TrySetProperty(ref currentHealth, value))
+                RaisePropertyChanged(&quot;HealthPercentage&quot;);
+        }
+    }
+    
+    public string MaxHealth
+    {
+        get =&gt; maxHealth;
+        set {
+            // If the max health was changed, notify the computed property changed
+            if (TrySetProperty(ref maxHealth, value))
+                RaisePropertyChanged(&quot;HealthPercentage&quot;);
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="iobservable"><a class="header" href="#iobservable">IObservable</a></h1>
+<p>Similar to <code>INotifyPropertyChanging</code> and <code>INotifyPropertyChanged</code> interfaces.</p>
+<h2 id="description-13"><a class="header" href="#description-13">Description</a></h2>
+<p>Represents an object that can be observed for property changes.</p>
+<h2 id="public-events-1"><a class="header" href="#public-events-1">Public Events</a></h2>
+<ul>
+<li><code>PropertyChanging : UnityAction&lt;string&gt;</code> - Raised when a property on the object is about to change, providing the property name.</li>
+<li><code>PropertyChanged : UnityAction&lt;string&gt;</code> - Raised when a property on the object has changed, providing the property name.</li>
+</ul>
+<h2 id="public-methods-12"><a class="header" href="#public-methods-12">Public Methods</a></h2>
+<ul>
+<li><code>RaisePropertyChanging(string)</code> - Manually raises the <code>PropertyChanging</code> event with the property name provided.</li>
+<li><code>RaisePropertyChanged(string)</code> - Manually raises the <code>PropertyChanged</code> event with the property name provided.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="observableobject"><a class="header" href="#observableobject">ObservableObject</a></h1>
+<p>Abstract base class that all other observable objects derive from.</p>
+<p>Implements the <a href="observables/iobservable.html"><code>IObservable</code></a> interface.</p>
+<h2 id="description-14"><a class="header" href="#description-14">Description</a></h2>
+<p>Represents an object that can be observed for property changes.
+It can be shared and modified throughout the application.</p>
+<h2 id="public-events-2"><a class="header" href="#public-events-2">Public Events</a></h2>
+<ul>
+<li><code>PropertyChanging : UnityAction&lt;string&gt;</code> - Raised when a property on the object is about to change, providing the property name.</li>
+<li><code>PropertyChanged : UnityAction&lt;string&gt;</code> - Raised when a property on the object has changed, providing the property name.</li>
+</ul>
+<h2 id="public-methods-13"><a class="header" href="#public-methods-13">Public Methods</a></h2>
+<ul>
+<li><code>RaisePropertyChanging(string)</code> - Manually raises the <code>PropertyChanging</code> event with the property name provided.</li>
+<li><code>RaisePropertyChanged(string)</code> - Manually raises the <code>PropertyChanged</code> event with the property name provided.</li>
+</ul>
+<h2 id="protected-methods"><a class="header" href="#protected-methods">Protected Methods</a></h2>
+<ul>
+<li><code>TrySetProperty&lt;T&gt;(ref T, T, [string]): bool</code> - Attempts to set the field value with the new <code>T</code> value. Optionally, a property name can be provided.</li>
+</ul>
+<p><strong>NOTE:</strong> The <code>PropertyChanging</code> and <code>PropertyChanged</code> events are only raised when the new value is <strong>not equal</strong> to the existing value.</p>
+<p><strong>NOTE:</strong> The <code>propertyName</code> argument is optional and defaults to the value of <a href="https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.callermembernameattribute?view=net-7.0"><code>[CallerMemberName]</code></a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="observablewatcher"><a class="header" href="#observablewatcher">ObservableWatcher</a></h1>
+<p>Base class that all other observable watchers derive from.</p>
+<h2 id="description-15"><a class="header" href="#description-15">Description</a></h2>
+<p>Component that watches an <a href="observables/observable-object.html"><code>ObservableObject</code></a> for property changes and raises events.</p>
+<h2 id="serialized-fields-inspector-1"><a class="header" href="#serialized-fields-inspector-1">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>observable : ObservableObject</code> - The object to watch for property changes.</li>
+<li><code>raiseOnAwake : bool</code> - Whether the <code>onPropertyChanged</code> event should be raised when <code>Awake()</code> is called.</li>
+<li><code>raiseOnEnable : bool</code> - Whether the <code>onPropertyChanged</code> event should be raised when <code>OnEnable()</code> is called.</li>
+<li><code>raiseOnStart : bool</code> - Whether the <code>onPropertyChanged</code> event should be raised when <code>Start()</code> is called.</li>
+</ul>
+<p><strong>NOTE:</strong> The <code>propertyName</code> will be <code>null</code> when the <code>onPropertyChanged</code> event is raised from <code>raiseOnAwake</code>, <code>raiseOnEnable</code>, or <code>raiseOnStart</code>.</p>
+<h2 id="public-events-inspector"><a class="header" href="#public-events-inspector">Public Events (Inspector)</a></h2>
+<ul>
+<li><code>onPropertyChanging : UnityEvent&lt;ObservableObject, string&gt;</code> - The actions to perform when a property on the object is changing.</li>
+<li><code>onPropertyChanged : UnityEvent&lt;ObservableObject, string&gt;</code> - The actions to perform when a property on the object has changed.</li>
+</ul>
+<h2 id="public-properties-2"><a class="header" href="#public-properties-2">Public Properties</a></h2>
+<ul>
+<li><code>Observable : ObservableObject</code> <strong>(get)</strong> - The object being watched for property changes.</li>
+</ul>
+<h2 id="public-methods-14"><a class="header" href="#public-methods-14">Public Methods</a></h2>
+<ul>
+<li><code>RaisePropertyChanging(string)</code> - Manually raises the <code>onPropertyChanging</code> event with the property name provided.</li>
+<li><code>RaisePropertyChanged(string)</code> - Manually raises the <code>onPropertyChanged</code> event with the property name provided.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising these events will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="references-1"><a class="header" href="#references-1">References</a></h1>
+<h2 id="overview-3"><a class="header" href="#overview-3">Overview</a></h2>
+<p>References are values that can either point to a constant value or a variable, toggleable at runtime.
+They are useful when used for quick prototyping and testing of components and features.</p>
+<p>Instead of a component needing a constant or hard reference to a <a href="variables/runtime-variable.html"><code>RuntimeVariable</code></a>, a <a href="references/runtime-reference.html"><code>RuntimeReference</code></a> can be used instead.
+This allows developers to start with a constant value initially and swap to a variable value without needing to redesign components.</p>
+<p>Their main benefit is that they can be switched at runtime which can greatly speed up play-testing and tweaking.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="runtimereferencet-tvar"><a class="header" href="#runtimereferencet-tvar">RuntimeReference&lt;T, TVar&gt;</a></h1>
+<p>Abstract base class that all other runtime references derive from.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-16"><a class="header" href="#description-16">Description</a></h2>
+<p>Represents a value that can point to either a constant value <code>T</code> or <a href="references/../variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<h2 id="serialized-fields-inspector-2"><a class="header" href="#serialized-fields-inspector-2">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>useConstant : bool</code> - Whether the reference should point to the constant value or the variable value.</li>
+<li><code>constantValue : T</code> - The constant value to be used, when <code>useConstant</code> is <code>true</code>.</li>
+<li><code>variable: TVar</code> - The variable value to be used, when <code>useConstant</code> is <code>false</code>.</li>
+</ul>
+<h2 id="public-properties-3"><a class="header" href="#public-properties-3">Public Properties</a></h2>
+<ul>
+<li><code>UseConstant : bool</code> - <strong>(get, set)</strong> - Whether the reference should point to the constant value or the variable value.</li>
+<li><code>ConstantValue : T</code> - <strong>(get)</strong> - The constant value to be used, when <code>UseConstant</code> is <code>true</code>.</li>
+<li><code>Variable : TVar</code> <strong>(get)</strong> - The variable value to be used, when <code>UseConstant</code> is <code>false</code>.</li>
+</ul>
+<h2 id="public-methods-15"><a class="header" href="#public-methods-15">Public Methods</a></h2>
+<ul>
+<li><code>GetValue() : T</code> - Returns the current value, either of the constant value or variable value.</li>
+<li><code>SetValue(T)</code> - Sets the value of the variable to a new value. Has no effect when <code>UseConstant</code> is <code>true</code>.</li>
+<li><code>SetUseConstant(bool)</code> - Sets whether the reference should point to the constant value or the variable value.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boolreference"><a class="header" href="#boolreference">BoolReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-17"><a class="header" href="#description-17">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>bool</code> value or <a href="references/../variables/bool-variable.html"><code>BoolVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="colorreference"><a class="header" href="#colorreference">ColorReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-18"><a class="header" href="#description-18">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Color</code> value or <a href="references/../variables/color-variable.html"><code>ColorVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doublereference"><a class="header" href="#doublereference">DoubleReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-19"><a class="header" href="#description-19">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>double</code> value or <a href="references/../variables/double-variable.html"><code>DoubleVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="floatreference"><a class="header" href="#floatreference">FloatReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-20"><a class="header" href="#description-20">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>float</code> value or <a href="references/../variables/float-variable.html"><code>FloatVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="intreference"><a class="header" href="#intreference">IntReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-21"><a class="header" href="#description-21">Description</a></h2>
+<p>Represents a value that can point to either a constant signed <code>int</code> value or <a href="references/../variables/int-variable.html"><code>IntVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stringreference"><a class="header" href="#stringreference">StringReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-22"><a class="header" href="#description-22">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>string</code> value or <a href="references/../variables/string-variable.html"><code>StringVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformreference"><a class="header" href="#transformreference">TransformReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-23"><a class="header" href="#description-23">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Transform</code> value or <a href="references/../variables/transform-variable.html"><code>TransformVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2intreference"><a class="header" href="#vector2intreference">Vector2IntReference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-24"><a class="header" href="#description-24">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Vector2Int</code> value or <a href="references/../variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2reference"><a class="header" href="#vector2reference">Vector2Reference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-25"><a class="header" href="#description-25">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Vector2</code> value or <a href="references/../variables/vector2-variable.html"><code>Vector2Variable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector3reference"><a class="header" href="#vector3reference">Vector3Reference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-26"><a class="header" href="#description-26">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Vector3</code> value or <a href="references/../variables/vector3-variable.html"><code>Vector3Variable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector4reference"><a class="header" href="#vector4reference">Vector4Reference</a></h1>
+<p>Derives from <a href="references/runtime-reference.html"><code>RuntimeReference&lt;T, TVar&gt;</code></a>.</p>
+<p>Marked with the <code>Serializable</code> attribute.</p>
+<h2 id="description-27"><a class="header" href="#description-27">Description</a></h2>
+<p>Represents a value that can point to either a constant <code>Vector4</code> value or <a href="references/../variables/vector4-variable.html"><code>Vector4Variable</code></a> value.</p>
+<p>Can be toggled at runtime to switch between these values.</p>
+<blockquote>
+<p>This class does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="watchers-1"><a class="header" href="#watchers-1">Watchers</a></h1>
+<h2 id="overview-4"><a class="header" href="#overview-4">Overview</a></h2>
+<p>Runtime variable watchers are implemented as <code>MonoBehaviour</code> components that can be used to bind <code>UnityEvent</code> actions to value change events via the Unity Inspector.
+This allows the watchers to notify other components without needing to write extra boilerplate code for subscribing and unsubscribing to those events.</p>
+<p>It also allows multiple actions to be triggered from a single value change event.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="runtimevariablewatchert-tvar"><a class="header" href="#runtimevariablewatchert-tvar">RuntimeVariableWatcher&lt;T, TVar&gt;</a></h1>
+<p>Abstract base class that all other runtime variable watchers derive from.</p>
+<h2 id="description-28"><a class="header" href="#description-28">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/runtime-variable.html"><code>RuntimeVariable&lt;T&gt;</code></a> for value changes and raises events.</p>
+<h2 id="serialized-fields-inspector-3"><a class="header" href="#serialized-fields-inspector-3">Serialized Fields (Inspector)</a></h2>
+<ul>
+<li><code>variable : TVar</code> - The variable to watch for value changes.</li>
+<li><code>raiseOnAwake : bool</code> - Whether the <code>onValueChanged</code> event should be raised when <code>Awake()</code> is called.</li>
+<li><code>raiseOnEnable : bool</code> - Whether the <code>onValueChanged</code> event should be raised when <code>OnEnable()</code> is called.</li>
+<li><code>raiseOnStart : bool</code> - Whether the <code>onValueChanged</code> event should be raised when <code>Start()</code> is called.</li>
+</ul>
+<h2 id="public-events-inspector-1"><a class="header" href="#public-events-inspector-1">Public Events (Inspector)</a></h2>
+<ul>
+<li><code>onValueChanging : UnityEvent&lt;T&gt;</code> - The actions to perform when the variable value is changing.</li>
+<li><code>onValueChanged : UnityEvent&lt;T&gt;</code> - The actions to perform when the variable value has changed.</li>
+</ul>
+<h2 id="public-properties-4"><a class="header" href="#public-properties-4">Public Properties</a></h2>
+<ul>
+<li><code>Variable : TVar</code> <strong>(get)</strong> - The variable being watched for value changes.</li>
+</ul>
+<h2 id="public-methods-16"><a class="header" href="#public-methods-16">Public Methods</a></h2>
+<ul>
+<li><code>RaiseValueChanging(T)</code> - Manually raises the <code>onValueChanging</code> event with the value provided.</li>
+<li><code>RaiseValueChanged()</code> - Manually raises the <code>onValueChanged</code> event with the current value of the variable.</li>
+</ul>
+<p><strong>NOTE:</strong> Manually raising these events will only trigger the <code>UnityEvent</code> actions on <strong>this</strong> component.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="boolvariablewatcher"><a class="header" href="#boolvariablewatcher">BoolVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-29"><a class="header" href="#description-29">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/bool-variable.html"><code>BoolVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="colorvariablewatcher"><a class="header" href="#colorvariablewatcher">ColorVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-30"><a class="header" href="#description-30">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/color-variable.html"><code>ColorVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="doublevariablewatcher"><a class="header" href="#doublevariablewatcher">DoubleVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-31"><a class="header" href="#description-31">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/double-variable.html"><code>DoubleVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="floatvariablewatcher"><a class="header" href="#floatvariablewatcher">FloatVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-32"><a class="header" href="#description-32">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/float-variable.html"><code>FloatVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="intvariablewatcher"><a class="header" href="#intvariablewatcher">IntVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-33"><a class="header" href="#description-33">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/int-variable.html"><code>IntVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scriptableobjectvariablewatcher"><a class="header" href="#scriptableobjectvariablewatcher">ScriptableObjectVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-34"><a class="header" href="#description-34">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/scriptable-object-variable.html"><code>ScriptableObjectVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="stringvariablewatcher"><a class="header" href="#stringvariablewatcher">StringVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-35"><a class="header" href="#description-35">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/string-variable.html"><code>StringVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transformvariablewatcher"><a class="header" href="#transformvariablewatcher">TransformVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-36"><a class="header" href="#description-36">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/transform-variable.html"><code>TransformVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2intvariablewatcher"><a class="header" href="#vector2intvariablewatcher">Vector2IntVariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-37"><a class="header" href="#description-37">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/vector2int-variable.html"><code>Vector2IntVariable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector2variablewatcher"><a class="header" href="#vector2variablewatcher">Vector2VariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-38"><a class="header" href="#description-38">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/vector2-variable.html"><code>Vector2Variable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector3variablewatcher"><a class="header" href="#vector3variablewatcher">Vector3VariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-39"><a class="header" href="#description-39">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/vector3-variable.html"><code>Vector3Variable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vector4variablewatcher"><a class="header" href="#vector4variablewatcher">Vector4VariableWatcher</a></h1>
+<p>Derives from <a href="watchers/runtime-variable-watcher.html"><code>RuntimeVariableWatcher&lt;T, TVar&gt;</code></a>.</p>
+<h2 id="description-40"><a class="header" href="#description-40">Description</a></h2>
+<p>Component that watches a <a href="watchers/../variables/vector4-variable.html"><code>Vector4Variable</code></a> for value changes and raises events.</p>
+<blockquote>
+<p>This component does not have any additional members.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
